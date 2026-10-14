@@ -4,6 +4,7 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
 <meta name="description" content="Filipino bakery and café at 236 Onehunga Mall, Onehunga. Pandesal and ensaymada baked fresh daily, Kiwi pies and proper coffee. Call 09 971 2673 to order, or get it on DoorDash.">
+<meta name="robots" content="index,follow,max-image-preview:large,max-snippet:-1,max-video-preview:-1">
 <meta name="theme-color" content="#3B1E0E">
 <meta name="geo.region" content="NZ-AUK">
 <meta name="geo.placename" content="Onehunga, Auckland">
@@ -99,17 +100,27 @@ p{margin:0}
 .wm b{font-family:var(--s);font-weight:400;display:block;font-size:.46em;margin-top:.02em;letter-spacing:0;color:var(--ink-2)}
 
 /* ---- buttons: sharp, letterpressed, no pills ---- */
-.cta{position:relative;display:inline-flex;align-items:center;gap:14px;padding:18px 30px;overflow:hidden;
-  background:var(--espresso);color:var(--ivory);font-size:.72rem;font-weight:600;letter-spacing:.2em;text-transform:uppercase;
-  box-shadow:inset 0 0 0 1px rgba(210,162,68,.34);transition:color .4s,box-shadow .55s var(--e),transform .5s var(--e)}
-.cta span,.cta svg{position:relative;z-index:1}
-.cta svg{width:15px;height:9px;transition:transform .5s var(--e)}
-.cta::before{content:"";position:absolute;inset:0;background:var(--brass-2);transform:translateY(101%);transition:transform .55s var(--e)}
-.cta:hover{color:var(--espresso);transform:translateY(-2px);
-  box-shadow:inset 0 0 0 1px var(--brass-2),0 0 0 6px rgba(210,162,68,.16),0 16px 40px -10px rgba(210,162,68,.6)}
-.cta:hover::before{transform:none}
-.cta:hover svg{transform:translateX(5px)}
+.cta{position:relative;display:inline-flex;align-items:center;gap:17px;padding:20px 32px;overflow:hidden;border-radius:1px;
+  background:var(--espresso);color:var(--ivory);font-family:var(--u);font-size:.69rem;font-weight:700;letter-spacing:.14em;text-transform:uppercase;
+  box-shadow:inset 0 1px 0 rgba(253,246,235,.14),0 1px 2px rgba(46,23,10,.2);
+  transition:color .5s var(--e),box-shadow .5s var(--e)}
+.cta span,.cta svg{position:relative;z-index:2}
+.cta svg{width:19px;height:9px;transition:transform .55s var(--e)}
+/* foil-stamped inner rule — the device from a good bakery box */
+.cta::after{content:"";position:absolute;inset:5px;z-index:1;pointer-events:none;border:1px solid rgba(216,168,108,.3);
+  transition:border-color .5s var(--e),inset .5s var(--e)}
+.cta::before{content:"";position:absolute;inset:0;background:var(--brass-2);transform:scaleX(0);transform-origin:left;
+  transition:transform .62s cubic-bezier(.76,0,.24,1)}
+.cta:hover::before,.cta:focus-visible::before{transform:none}
+.cta:hover,.cta:focus-visible{color:var(--espresso);box-shadow:inset 0 0 0 1px var(--brass),0 2px 8px -3px rgba(93,56,20,.35)}
+.cta:hover::after,.cta:focus-visible::after{inset:7px;border-color:rgba(59,30,14,.34)}
+.cta:hover svg,.cta:focus-visible svg{transform:translateX(6px)}
+.cta:active{box-shadow:inset 0 2px 6px rgba(46,23,10,.4)}
 .cta--g{background:transparent;color:var(--ink);box-shadow:inset 0 0 0 1px var(--rule)}
+.cta--g::after{border-color:rgba(169,104,46,.22)}
+.cta--g::before{background:var(--espresso)}
+.cta--g:hover,.cta--g:focus-visible{color:var(--ivory);box-shadow:inset 0 0 0 1px var(--espresso)}
+.cta--g:hover::after,.cta--g:focus-visible::after{border-color:rgba(216,168,108,.4)}
 .lnk{display:inline-flex;align-items:center;gap:11px;font-family:var(--a);font-style:italic;font-weight:600;font-optical-sizing:auto;font-variation-settings:"SOFT" 55,"WONK" 1;font-size:1.16rem;
   padding-bottom:4px;position:relative;color:var(--ink)}
 .lnk::after{content:"";position:absolute;left:0;right:0;bottom:0;height:1px;background:currentColor;transform-origin:right;transition:transform .5s var(--e)}
@@ -125,7 +136,7 @@ p{margin:0}
 .lg--glow{box-shadow:0 0 44px -6px rgba(var(--glow),.5)}
 
 /* live status pill in the hero */
-.hstat{display:flex;width:max-content;max-width:100%;align-items:center;gap:9px;margin-top:14px;padding:7px 15px 7px 12px;border-radius:999px;
+.hstat{display:flex;width:max-content;max-width:100%;align-items:center;gap:10px;margin-top:14px;padding:8px 15px 8px 12px;border-radius:1px;
   background:var(--panel);border:1px solid var(--rule);text-decoration:none;
   font-family:var(--u);font-size:.63rem;font-weight:700;letter-spacing:.14em;text-transform:uppercase;color:var(--ink-2);
   transition:border-color .4s,transform .4s var(--e),box-shadow .4s}
@@ -137,6 +148,7 @@ p{margin:0}
 
 /* second hero image — depth behind the arch */
 .arch{--px:0deg;--py:0deg}
+.arch:hover .arch__in{will-change:transform}
 .arch__2{position:absolute;left:-15%;bottom:-2%;width:39%;aspect-ratio:4/5;z-index:2;border-radius:3px;overflow:hidden;
   background:var(--linen) center/cover no-repeat;background-image:var(--i-ensa);
   box-shadow:0 34px 70px -28px rgba(59,30,14,.6),0 0 0 6px var(--ivory);
@@ -221,11 +233,18 @@ html.done .intro{clip-path:inset(0 0 100% 0);pointer-events:none}
 .nlinks a.gnav::before{content:"";width:7px;height:7px;flex:none;border-radius:999px;background:var(--brass);
   animation:dotp 2.4s ease-in-out infinite}
 @keyframes dotp{0%,100%{box-shadow:0 0 0 0 rgba(169,104,46,.55)}60%{box-shadow:0 0 0 6px rgba(169,104,46,0)}}
-.navcall{display:inline-flex;align-items:center;gap:10px;flex:none;padding:13px 20px;background:var(--espresso);color:var(--ivory);
+.navcall{position:relative;display:inline-flex;align-items:center;gap:10px;flex:none;padding:13px 20px;background:var(--espresso);color:var(--ivory);
   font-family:var(--u);font-size:.79rem;font-weight:700;letter-spacing:.06em;white-space:nowrap;border-radius:2px;
-  border-left:3px solid var(--brass-2);
-  transition:background .4s,color .4s,box-shadow .5s var(--e),transform .5s var(--e)}
-.navcall:hover{background:var(--brass);color:#fff;transform:translateY(-2px);box-shadow:0 14px 30px -12px rgba(160,118,31,.8)}
+  border-radius:1px;overflow:hidden;box-shadow:inset 0 1px 0 rgba(253,246,235,.14);
+  transition:color .45s var(--e),box-shadow .45s var(--e)}
+.navcall::after{content:"";position:absolute;inset:4px;pointer-events:none;z-index:1;border:1px solid rgba(216,168,108,.3);
+  transition:border-color .45s,inset .45s var(--e)}
+.navcall::before{content:"";position:absolute;inset:0;background:var(--brass-2);transform:scaleX(0);transform-origin:left;
+  transition:transform .55s cubic-bezier(.76,0,.24,1)}
+.navcall svg,.navcall span{position:relative;z-index:2}
+.navcall:hover,.navcall:focus-visible{color:var(--espresso);box-shadow:inset 0 0 0 1px var(--brass)}
+.navcall:hover::before,.navcall:focus-visible::before{transform:none}
+.navcall:hover::after,.navcall:focus-visible::after{inset:6px;border-color:rgba(59,30,14,.32)}
 .navcall svg{width:15px;height:15px}
 .prog{position:fixed;left:0;top:0;height:2px;width:100%;transform-origin:left;transform:scaleX(0);background:var(--brass);z-index:85}
 @media (max-width:1080px){.nlinks{display:none}}
@@ -260,8 +279,9 @@ html.done .intro{clip-path:inset(0 0 100% 0);pointer-events:none}
 .draw__l a:active,.draw__l a:hover{color:var(--brass-2)}
 .draw__g{color:var(--brass-2)!important}
 .draw__f{padding-top:16px;border-top:1px solid rgba(237,226,207,.16)}
-.draw__call{display:flex;align-items:center;gap:13px;padding:15px 18px;border-radius:2px;text-decoration:none;
-  background:var(--brass);color:#fff;border-left:3px solid var(--brass-2)}
+.draw__call{position:relative;display:flex;align-items:center;gap:13px;padding:16px 18px;border-radius:1px;text-decoration:none;
+  background:var(--brass);color:#fff;box-shadow:inset 0 1px 0 rgba(255,255,255,.2)}
+.draw__call::after{content:"";position:absolute;inset:5px;pointer-events:none;border:1px solid rgba(253,246,235,.28)}
 .draw__call svg{width:17px;height:17px;flex:none;fill:currentColor}
 .draw__call b{display:block;font-family:var(--u);font-size:1rem;font-weight:800;letter-spacing:.03em}
 .draw__call small{display:block;font-family:var(--u);font-size:.58rem;font-weight:600;letter-spacing:.12em;
@@ -275,6 +295,7 @@ html.done .intro{clip-path:inset(0 0 100% 0);pointer-events:none}
 .draw__s svg{width:17px;height:17px;fill:var(--linen)}
 html.drawn,html.drawn body{overflow:hidden}
 @media (prefers-reduced-motion:reduce){.draw,.draw__l a,.burger i{transition-duration:.01ms!important;animation:none!important}}
+@media (max-width:900px){.nav{backdrop-filter:blur(10px) saturate(1.15);-webkit-backdrop-filter:blur(10px) saturate(1.15)}}
 @media (max-width:560px){.navcall span{display:none}}
 
 /* hero — ivory ground, arch photo, no full-bleed snapshot */
@@ -318,7 +339,7 @@ html.drawn,html.drawn body{overflow:hidden}
 .arch{position:relative;perspective:1400px}
 .arch__in{position:relative;aspect-ratio:514/624;border-radius:50% 50% 4px 4px / 32% 32% 4px 4px;overflow:hidden;
   background:var(--linen) center center no-repeat;background-size:cover;background-image:var(--i-hand);
-  box-shadow:0 40px 70px -40px rgba(26,20,17,.55);transform-style:preserve-3d;will-change:transform;
+  box-shadow:0 40px 70px -40px rgba(26,20,17,.55);transform-style:preserve-3d;
   transform:rotateX(var(--ax,0deg)) rotateY(var(--ay,0deg));transition:transform .6s var(--e)}
 .arch__in.act{transition:transform .12s linear}
 .arch__in::after{content:"";position:absolute;inset:0;border-radius:inherit;box-shadow:inset 0 0 0 1px rgba(246,239,227,.5)}
@@ -401,8 +422,9 @@ html.js [data-roll].in{opacity:1;transform:none;clip-path:inset(0 0 0 0)}
 
 /* 3d cards */
 .trio{display:grid;gap:clamp(14px,2vw,26px);grid-template-columns:repeat(auto-fit,minmax(min(100%,256px),1fr));perspective:1400px}
-.tc{position:relative;transform-style:preserve-3d;will-change:transform;
+.tc{position:relative;transform-style:preserve-3d;
   transform:rotateX(var(--rx,0deg)) rotateY(var(--ry,0deg));transition:transform .5s var(--e)}
+.tc.act{will-change:transform}
 .tc.act{transition:transform .1s linear}
 .tc__ph{position:relative;aspect-ratio:3/4;overflow:hidden;border-radius:3px;background:var(--linen) center center no-repeat;background-size:cover;background-image:var(--bg);
   box-shadow:0 20px 46px -28px rgba(26,20,17,.55);transform-style:preserve-3d}
@@ -440,8 +462,8 @@ html.js [data-roll].in{opacity:1;transform:none;clip-path:inset(0 0 0 0)}
 .note{font-size:.74rem;color:var(--ink-3);margin-top:8px}
 .peek{position:fixed;left:0;top:0;z-index:70;width:clamp(170px,15vw,238px);aspect-ratio:3/4;pointer-events:none;
   opacity:0;border-radius:3px;overflow:hidden;box-shadow:0 26px 60px -26px rgba(26,20,17,.62);
-  transition:opacity .35s var(--e);will-change:transform}
-.peek.on{opacity:1}
+  transition:opacity .35s var(--e)}
+.peek.on{opacity:1;will-change:transform}
 .peek i{position:absolute;inset:0;background:center/cover no-repeat;opacity:0;transition:opacity .35s}
 .peek i.on{opacity:1}
 
@@ -459,14 +481,17 @@ html.js [data-roll].in{opacity:1;transform:none;clip-path:inset(0 0 0 0)}
 .ord h3{font-family:var(--d);font-size:clamp(1.25rem,2vw,1.6rem);font-weight:600;line-height:1.14}
 .ord p{font-size:.85rem;color:var(--ink-2);line-height:1.62}
 .bigcall{margin-top:clamp(18px,2.6vh,28px);display:grid;justify-items:center;gap:12px;text-align:center}
-.bigcall__b{position:relative;display:inline-flex;align-items:center;gap:16px;padding:18px 30px 18px 20px;border-radius:3px;
+.bigcall__b{position:relative;display:inline-flex;align-items:center;gap:16px;padding:18px 30px 18px 20px;border-radius:1px;
   background:var(--espresso);color:var(--ivory);text-decoration:none;border-left:4px solid var(--brass-2);overflow:hidden;
   box-shadow:0 22px 46px -22px rgba(59,30,14,.75);transition:transform .5s var(--e),box-shadow .5s var(--e),background .4s}
-.bigcall__b::after{content:"";position:absolute;top:0;bottom:0;left:-60%;width:42%;pointer-events:none;
+.bigcall__b::after{content:"";position:absolute;inset:5px;pointer-events:none;border:1px solid rgba(253,246,235,.22);
+  transition:border-color .5s,inset .5s var(--e)}
+.bigcall__b--x{content:"";position:absolute;top:0;bottom:0;left:-60%;width:42%;pointer-events:none;
   background:linear-gradient(100deg,transparent,rgba(255,255,255,.16),transparent);transform:skewX(-18deg);transition:left .8s var(--e)}
-.bigcall__b:hover{transform:translateY(-3px);background:var(--brass);box-shadow:0 28px 56px -20px rgba(169,104,46,.85)}
-.bigcall__b:hover::after{left:130%}
-.bigcall__i{width:46px;height:46px;flex:none;border-radius:999px;display:grid;place-items:center;background:var(--brass-2);color:var(--espresso)}
+.bigcall__b:hover,.bigcall__b:focus-visible{background:var(--brass);box-shadow:0 3px 14px -6px rgba(93,56,20,.45)}
+.bigcall__b:hover::after,.bigcall__b:focus-visible::after{inset:7px;border-color:rgba(253,246,235,.45)}
+.bigcall__i{width:48px;height:48px;flex:none;border-radius:1px;display:grid;place-items:center;background:var(--brass-2);color:var(--espresso);
+  box-shadow:inset 0 0 0 1px rgba(59,30,14,.25)}
 .bigcall__i svg{width:22px;height:22px}
 .bigcall__t{display:grid;gap:3px;text-align:left}
 .bigcall__t b{font-family:var(--d);font-size:clamp(1.15rem,1.9vw,1.5rem);font-weight:700;line-height:1.1}
@@ -578,10 +603,11 @@ a.chan__c:hover{transform:translateY(-4px);border-color:var(--brass);box-shadow:
   padding:15px 22px;border-radius:2px;background:#EB1700;color:#fff;text-decoration:none;overflow:hidden;
   font-family:var(--u);font-size:.76rem;font-weight:700;letter-spacing:.1em;
   box-shadow:0 14px 30px -14px rgba(235,23,0,.85);transition:background .35s,transform .5s var(--e),box-shadow .5s var(--e)}
-.ddbtn::after{content:"";position:absolute;top:0;bottom:0;left:-60%;width:45%;pointer-events:none;
+.ddbtn::after{content:"";position:absolute;inset:0;pointer-events:none;border-radius:inherit;
+  box-shadow:inset 0 1px 0 rgba(255,255,255,.22);transition:box-shadow .45s}
+.ddbtn--x{content:"";position:absolute;top:0;bottom:0;left:-60%;width:45%;pointer-events:none;
   background:linear-gradient(100deg,transparent,rgba(255,255,255,.32),transparent);transform:skewX(-18deg);transition:left .75s var(--e)}
-.ddbtn:hover{background:#C81400;transform:translateY(-2px);box-shadow:0 20px 40px -14px rgba(235,23,0,.95)}
-.ddbtn:hover::after{left:120%}
+.ddbtn:hover,.ddbtn:focus-visible{background:#C81400;box-shadow:0 3px 12px -5px rgba(120,20,8,.55)}
 .ddbtn__m{width:22px;height:22px;flex:none}
 .ddbtn__a{width:16px;height:9px;flex:none;transition:transform .5s var(--e)}
 .ddbtn:hover .ddbtn__a{transform:translateX(5px)}
@@ -589,8 +615,8 @@ a.chan__c:hover{transform:translateY(-4px);border-color:var(--brass);box-shadow:
 .chan__c--call{background:var(--espresso);color:var(--linen);border-color:var(--espresso);border-top:3px solid var(--brass-2)}
 .chan__c--call .chan__d{color:#C9B79F}
 .chan__c--call .chan__n{color:#A08D74}
-.ddbtn--call{background:var(--brass);box-shadow:0 14px 30px -14px rgba(169,104,46,.9)}
-.ddbtn--call:hover{background:var(--brass-2);color:var(--espresso);box-shadow:0 20px 40px -14px rgba(216,168,108,.9)}
+.ddbtn--call{background:var(--brass);box-shadow:0 2px 6px -2px rgba(93,56,20,.4)}
+.ddbtn--call:hover,.ddbtn--call:focus-visible{background:var(--brass-2);color:var(--espresso);box-shadow:0 3px 12px -5px rgba(93,56,20,.45)}
 .chan__t{font-family:var(--u);font-size:.58rem;font-weight:700;letter-spacing:.26em;text-transform:uppercase;color:var(--brass)}
 .chan__c--call .chan__t{color:var(--brass-2)}
 .chan__c strong{font-family:var(--d);font-size:clamp(1.3rem,2.1vw,1.7rem);font-weight:700;line-height:1.12}
@@ -600,12 +626,13 @@ a.chan__c:hover{transform:translateY(-4px);border-color:var(--brass);box-shadow:
 .chan__a svg{width:16px;height:9px;transition:transform .5s var(--e)}
 .chan__c:hover .chan__a svg{transform:translateX(6px)}
 
-/* halo glows */
+/* warm counter-light under the play button — soft, not a neon halo */
 .cta,.hplay,.gbtn{position:relative}
-.cta::after,.hplay::after{content:"";position:absolute;inset:-3px;border-radius:inherit;pointer-events:none;z-index:-1;
-  background:radial-gradient(closest-side,rgba(var(--glow),.55),transparent 76%);opacity:0;filter:blur(9px);transition:opacity .5s}
-.cta:hover::after,.hplay:hover::after{opacity:1}
-.band .cta::after{opacity:.55}
+.hplay::after{content:"";position:absolute;inset:-2px;border-radius:inherit;pointer-events:none;z-index:-1;
+  background:radial-gradient(closest-side,rgba(var(--glow),.3),transparent 74%);opacity:0;filter:blur(11px);transition:opacity .55s}
+.hplay:hover::after{opacity:1}
+/* on the dark band the foil rule lightens so it still reads */
+.band .cta::after{border-color:rgba(216,168,108,.45)}
 
 /* dark statement band */
 .band{position:relative;overflow:hidden;background:var(--espresso);color:var(--ivory);isolation:isolate}
@@ -806,8 +833,9 @@ a.chan__c:hover{transform:translateY(-4px);border-color:var(--brass);box-shadow:
 .st__f{display:none}
 .buff{font-size:.66rem;font-weight:600;letter-spacing:.2em;text-transform:uppercase;color:var(--brass);min-height:1em}
 .pd{width:min(42vw,240px);aspect-ratio:1;position:relative;perspective:800px;cursor:pointer;border:0;background:none;padding:0;touch-action:manipulation}
-.pd__b{position:absolute;inset:0;transform-style:preserve-3d;will-change:transform;
+.pd__b{position:absolute;inset:0;transform-style:preserve-3d;
   transform:rotateX(var(--px,10deg)) rotateY(var(--py,0deg)) scale(var(--ps,1));transition:transform .5s var(--e)}
+.pd:hover .pd__b,.pd:active .pd__b{will-change:transform}
 .pd.tap .pd__b{transition:transform .09s ease-out}
 .pd__s{position:absolute;inset:13% 3%;border-radius:48% 48% 44% 44%/56% 56% 44% 44%;
   background:radial-gradient(42% 34% at 33% 24%,#FBE3B4,#EFC178 40%,#CE8F3E 72%,#8A5620 100%);
@@ -1023,6 +1051,16 @@ a.chan__c:hover{transform:translateY(-4px);border-color:var(--brass);box-shadow:
 }
 </style>
 <!--HEAD-END-->
+<script type="application/ld+json">
+{"@context":"https://schema.org","@type":"FAQPage","mainEntity":[
+{"@type":"Question","name":"What are Bread N Brew Caf\u00e9's opening hours?","acceptedAnswer":{"@type":"Answer","text":"Tuesday to Saturday 7am\u20136pm, Sunday 8am\u20134pm. Closed Mondays so the team can rest and prep for the week."}},
+{"@type":"Question","name":"Where is Bread N Brew Caf\u00e9?","acceptedAnswer":{"@type":"Answer","text":"236 Onehunga Mall, Onehunga, Auckland 1061 \u2014 in the middle of the Onehunga Mall shops, with street parking along the Mall."}},
+{"@type":"Question","name":"Do you deliver?","acceptedAnswer":{"@type":"Answer","text":"Yes. Bread N Brew Caf\u00e9 is on DoorDash for delivery around Onehunga. You can also ring 09 971 2673 and collect in store. DoorDash prices differ from the in-store prices."}},
+{"@type":"Question","name":"Can I order in bulk or for a party?","acceptedAnswer":{"@type":"Answer","text":"Yes. Bulk, party and catering orders are taken by phone on 09 971 2673 \u2014 trays of bread, boxes of pastries, platters and hot food."}},
+{"@type":"Question","name":"What is ensaymada?","acceptedAnswer":{"@type":"Answer","text":"Ensaymada is a soft coiled brioche topped with butter, sugar and grated cheese. Bread N Brew Caf\u00e9 makes three: ube (purple yam), yema (milk custard) and classic cheese."}},
+{"@type":"Question","name":"What is pandesal?","acceptedAnswer":{"@type":"Answer","text":"Pandesal is the Filipino bread roll \u2014 soft and slightly sweet, baked fresh each day. Have it with butter, cheese, peanut butter or coffee."}},
+{"@type":"Question","name":"Do you cater for allergies?","acceptedAnswer":{"@type":"Answer","text":"Everything is baked in one kitchen that handles wheat, milk, eggs, nuts, peanuts, soy and sesame, so cross-contact is possible. Ring 09 971 2673 to check a specific item."}}]}
+</script>
 </head>
 <body>
 <div class="grain" aria-hidden="true"></div>
@@ -1632,6 +1670,29 @@ a.chan__c:hover{transform:translateY(-4px);border-color:var(--brass);box-shadow:
 "telephone":"+64 9 971 2673",
 "priceRange":"$",
 "currenciesAccepted":"NZD",
+"servesCuisine":["Filipino","Cafe","Bakery"],
+"hasMenu":{"@type":"Menu","name":"Bread N Brew Caf\u00e9 menu","inLanguage":"en-NZ","hasMenuSection":[
+ {"@type":"MenuSection","name":"Filipino breads","hasMenuItem":[
+  {"@type":"MenuItem","name":"Ube Cheese Ensaymada"},{"@type":"MenuItem","name":"Yema Cheese Ensaymada"},
+  {"@type":"MenuItem","name":"Classic Cheese Ensaymada"},{"@type":"MenuItem","name":"Pandesal"},
+  {"@type":"MenuItem","name":"Cheese Puto Pao"},
+  {"@type":"MenuItem","name":"Torta de Cebu","offers":{"@type":"Offer","price":"4.00","priceCurrency":"NZD"}}]},
+ {"@type":"MenuSection","name":"Sweet treats & kakanin","hasMenuItem":[
+  {"@type":"MenuItem","name":"Sapin-Sapin"},{"@type":"MenuItem","name":"Twisted Bread"},
+  {"@type":"MenuItem","name":"Biscoff Cinnamon Rolls"},{"@type":"MenuItem","name":"Lava Cake"}]},
+ {"@type":"MenuSection","name":"Kiwi favourites","hasMenuItem":[
+  {"@type":"MenuItem","name":"Steak & Mushroom Pie","offers":{"@type":"Offer","price":"8.80","priceCurrency":"NZD"}},
+  {"@type":"MenuItem","name":"Savoury pies"},{"@type":"MenuItem","name":"Creamy donuts"},
+  {"@type":"MenuItem","name":"Sandwiches & rolls"}]},
+ {"@type":"MenuSection","name":"Hot food","hasMenuItem":[
+  {"@type":"MenuItem","name":"Chicken Pancit Bihon"},
+  {"@type":"MenuItem","name":"Pancit + 3pcs Lumpiang Shanghai","offers":{"@type":"Offer","price":"12.00","priceCurrency":"NZD"}},
+  {"@type":"MenuItem","name":"Lumpiang Shanghai"},{"@type":"MenuItem","name":"Rice toppings"}]},
+ {"@type":"MenuSection","name":"Brew","hasMenuItem":[
+  {"@type":"MenuItem","name":"Espresso, Flat White, Long Black"},{"@type":"MenuItem","name":"Iced Salted Caramel Latte"},
+  {"@type":"MenuItem","name":"Iced Mocha"},{"@type":"MenuItem","name":"Iced Hazelnut Latte"},
+  {"@type":"MenuItem","name":"Chai Latte"},{"@type":"MenuItem","name":"Iced Chocolate Oreo"},
+  {"@type":"MenuItem","name":"Hot chocolate"}]}]},
 "address":{"@type":"PostalAddress","streetAddress":"236 Onehunga Mall","addressLocality":"Onehunga","addressRegion":"Auckland","postalCode":"1061","addressCountry":"NZ"},
 "servesCuisine":["Filipino","Bakery","Coffee"],
 "sameAs":["https://www.instagram.com/breadnbrewcafe.nz/","https://www.facebook.com/profile.php?id=61591938144691","https://www.doordash.com/en-NZ/store/bread-n-brew-caf%C3%A9-auckland-51406069/117571146/"],
@@ -1967,24 +2028,26 @@ document.querySelectorAll('.gi[data-lb]').forEach(function(b){
 var galW=document.getElementById('gallery'),galT=document.getElementById('track'),
     galR=document.getElementById('rail'),galB=document.getElementById('galbar'),galN=document.getElementById('gnum'),
     galX=0,galTo=0,galRange=0,galLast=-1;
+var galTop=0,galSpan=0;
 function galSize(){
   if(!galW||!galT)return;
   if(innerWidth<=760){galW.style.height='';galT.style.transform='';galRange=0;return;}
   galRange=Math.max(0,galR.scrollWidth-galR.clientWidth);
   galW.style.height=(innerHeight+galRange)+'px';
+  galTop=galW.getBoundingClientRect().top+(pageYOffset||document.documentElement.scrollTop);
+  galSpan=galW.offsetHeight-innerHeight;
 }
-function galScroll(){
-  if(!galW||!galRange)return;
-  var r=galW.getBoundingClientRect(),
-      p=Math.min(1,Math.max(0,-r.top/(galW.offsetHeight-innerHeight)));
+function galScroll(y){
+  if(!galW||!galRange||galSpan<=0)return;
+  if(y===undefined)y=pageYOffset||document.documentElement.scrollTop;
+  var p=Math.min(1,Math.max(0,(y-galTop)/galSpan));
   galTo=-p*galRange;
   galT.style.transform='translate3d('+galTo.toFixed(2)+'px,0,0)';
   var n=Math.min(6,1+Math.round(p*5));
   if(n!==galLast){galLast=n;if(galN)galN.textContent=('0'+n).slice(-2);}
   if(galB)galB.style.transform='scaleX('+p.toFixed(4)+')';
 }
-addEventListener('resize',function(){galSize();galScroll();},{passive:true});
-if(galW){galSize();galScroll();addEventListener('load',function(){galSize();galScroll();});}
+if(galW){galSize();galScroll();}
 
 document.querySelectorAll('.grp').forEach(function(g){
   var box=g.querySelector('div'),rows=box?box.querySelectorAll('.row'):[];
@@ -2062,16 +2125,27 @@ if(fine&&!reduce){
 }
 
 var nav=document.getElementById('nav'),prog=document.getElementById('prog');
-var lastY=0,vel=0,prevY=0;
+var lastY=0,vel=0,prevY=0,docMax=0,seenY=-1,stuckWas=null;
+function remeasure(){
+  docMax=document.documentElement.scrollHeight-innerHeight;
+  galSize(); seenY=-1;
+}
+remeasure();
+addEventListener('load',remeasure);
+addEventListener('resize',remeasure,{passive:true});
+if(window.ResizeObserver){ var ro=new ResizeObserver(function(){ remeasure(); }); ro.observe(document.body); }
 function loop(){
   var y=pageYOffset||document.documentElement.scrollTop;
-  vel+=((y-prevY)-vel)*.2; prevY=y;
-  nav.classList.toggle('stuck',y>40);
+  var moved=(y!==seenY)||Math.abs(vel)>.05;
+  if(moved){
+  vel+=((y-prevY)-vel)*.2; prevY=y; seenY=y;
+  var stuck=y>40; if(stuck!==stuckWas){ nav.classList.toggle('stuck',stuck); stuckWas=stuck; }
   if(Math.abs(y-lastY)>4) lastY=y;
-  galScroll();
-  var max=document.body.scrollHeight-innerHeight;
+  galScroll(y);
+  var max=docMax;
   prog.style.transform='scaleX('+(max>0?(y/max).toFixed(4):0)+')';
   if(tkAnim) tkAnim.playbackRate=Math.min(4,1+Math.abs(vel)/26);
+  }
   if(fine&&!reduce){
     if(peekOn){
       pxL+=(px-pxL)*.13; pyL+=(py-pyL)*.13;
@@ -2444,8 +2518,10 @@ if(fab){
 if(ls(SEEN)!=='1' && !matchMedia('(prefers-reduced-motion: reduce)').matches){
   var fired=false, t=setTimeout(go,24000);
   function go(){ if(fired||gm.classList.contains('on'))return; fired=true; clearTimeout(t); pm.classList.add('on'); }
-  addEventListener('scroll',function(){var m=document.body.scrollHeight-innerHeight;
-    if(m>0&&(pageYOffset/m)>.45)go();},{passive:true});
+  var pmMax=0,pmT=0;
+  addEventListener('scroll',function(){
+    var n=Date.now(); if(n-pmT>1500){pmT=n;pmMax=document.documentElement.scrollHeight-innerHeight;}
+    if(pmMax>0&&(pageYOffset/pmMax)>.45)go();},{passive:true});
 }
 })();
 
